@@ -1,0 +1,10 @@
+#!/bin/sh
+# @version 2018.09.10, 19:46
+
+for NAME in "$@"
+do
+
+    test -f "${NAME}_" && mv -f "${NAME}_" "${NAME}.orig"
+    diff -wbu "${NAME}.orig" "${NAME}" > "${NAME}.diff"
+
+done

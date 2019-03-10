@@ -1,0 +1,101 @@
+#!/sbin/sh
+# @overview Patch utility script
+# @since 2018.02.23, 23:35
+# @version 2019.02.27, 12:11
+
+# Test for config file existing
+PATCHCONFIG="./patch-config.sh"
+if [ ! -f $PATCHCONFIG ]; then
+    echo "Not found patch config file!"
+    exit 1
+fi
+
+# Loading configuration (PATCHCD etc)
+. $PATCHCONFIG
+
+# Importing from config variables:
+#   - ROOTCD: Root path for looking up in folders tree
+#   - PATCHCD: Path relative to ROOT -- working path
+#   - PRECMD: Command to run after all patches applied
+#   - POSTCMD: Command to run after all patches applied
+
+# Root path from config
+echo "ROOTCD: $ROOTCD"
+
+# Saving source path
+SRCPATH=`pwd`
+echo "SRCPATH: $SRCPATH"
+
+# Finding diffs...
+DIFFS=`find . -name "*.diff"`
+echo "DIFFS: $DIFFS"
+
+# Maximum scanning path depth
+MAXDEPTH=15
+
+# Patching root (finding this folder in parents recursively).
+FOUNDROOT=""
+L=1
+while [ $L -le $MAXDEPTH ]; do
+    echo -n "."
+    if [ -d "$ROOTCD" ]; then
+        echo " Found root: $ROOTCD"
+        FOUNDROOT=1
+        break
+    fi
+    ROOTCD="../$ROOTCD"
+    L=$(expr $L + 1)
+done
+# If no root found...
+if [ -z "${FOUNDROOT}" ]; then
+    echo " No project root found!"
+    exit
+fi
+
+WORKPATH="$ROOTCD/$PATCHCD"
+if [ ! -d "$WORKPATH" ]; then
+  echo "No working path ($WORKPATH) exists!"
+  exit 1
+fi
+
+# Cd to working path
+echo "Working in $WORKPATH"
+cd "$WORKPATH"
+
+if [ ! -z "$PRECMD" ]; then
+    echo "Precmd applying: $PRECMD"
+    eval $PRECMD || PRECMDFAIL=1
+    if [ $PRECMDFAIL ]; then
+        echo "Precmd failed!"
+        exit 1
+    else
+        echo "Precmd applied"
+    fi
+fi
+
+# Patching file
+for NAME in $DIFFS; do
+  echo ""
+  echo "Patching with $NAME ..."
+  cp -vf "$SRCPATH/$NAME" .
+  patch -lbf --verbose < "$NAME" || FAIL=1
+  if [ ! -z $FAIL ]; then
+    echo "Patch '$NAME' failed!"
+    exit 1
+  fi
+done
+
+if [ ! -z "$POSTCMD" ]; then
+    echo "Postcmd applying: $POSTCMD"
+    eval $POSTCMD || POSTCMDFAIL=1
+    if [ $POSTCMDFAIL ]; then
+        echo "Postcmd failed!"
+        exit 1
+    else
+        echo "Postcmd applied"
+    fi
+fi
+
+# Returning path to original path
+cd $SRCPATH
+

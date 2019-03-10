@@ -1,0 +1,11 @@
+--- ./file-contents-eval.js.orig	2018-09-29 23:34:15.686081900 +0300
++++ ./file-contents-eval.js	2018-09-29 23:35:11.705430500 +0300
+@@ -16,7 +16,7 @@
+ module.exports = function(contents, filename, context) {
+     var ext = path.extname(filename);
+ 
+-    if (ext === '.json' || ext === '.js') {
++    if (ext === '.json' || ext === '.js' || ext === '.bemjson') {
+         return nodeEval(contents, filename, context);
+     }
+ 

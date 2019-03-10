@@ -1,0 +1,13 @@
+// vim: ft=stylus
+/**
+ * @module page_BundleIndex
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.11.05 21:43
+ * @version 2018.11.05 21:43
+ */
+
+.page {
+  &_BundleIndex {
+    margin: $(containerPadding)px;
+  }
+}

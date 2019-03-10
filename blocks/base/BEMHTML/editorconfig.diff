@@ -1,0 +1,6 @@
+--- .editorconfig.empty	2018-10-01 02:38:13.701862800 +0300
++++ .editorconfig	2018-10-01 02:30:55.064935900 +0300
+@@ -0,0 +1,3 @@
++[*.js]
++indent_size = 4
++trim_trailing_whitespace = false

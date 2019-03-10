@@ -1,0 +1,52 @@
+
+!*.bemjson
+
+# Config, content and system-related stuff...
+.*
+node_modules/
+assets/
+public/
+package/
+bundle/
+utils/
+dist/
+
+# Non-code folders...
+\!Patches/
+\!Project/
+\!UNUSED/
+\!Work
+
+# Samples (may be linted sometimes; then comment first global rule or make exclusion)
+\!Samples/
+\!Samples/180920-bootstrap-4.1.3/
+
+# pages...
+bundle-pages/*/*
+pages/*/*
+!pages/*/*.bemjson
+!pages/*/*.bemjson.js
+!bundle-pages/*/*.bemjson
+!bundle-pages/*/*.bemjson.js
+
+# Some expensive third-part libs...
+blocks/base/BEMHTML
+blocks/libs/dateformatter
+blocks/libs/i-bem-dom
+
+# Some unused/backup files & modules...
+**/00*
+00*/
+*~
+*_
+
+# !**/*.bemhtml
+
+# Enable root configs etc...
+# !.*.js
+!.bemrc.js
+!.bem/
+.bem/cache/
+!.enb/
+.enb/tmp/
+

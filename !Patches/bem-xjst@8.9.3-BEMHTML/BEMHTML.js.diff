@@ -1,0 +1,59 @@
+--- BEMHTML.js.orig	2018-11-06 05:41:48.531953400 +0300
++++ BEMHTML.js	2018-11-06 05:45:34.831048900 +0300
+@@ -1,3 +1,29 @@
++// If module defined...
++if ( modules.isDefined('BEMHTML') ) {
++    // ...But not exists global variable...
++    if ( typeof window.BEMHTML !== 'object' ) {
++        modules.require(['BEMHTML'],
++            function _resolve (BEMHTML) {
++                window.BEMHTML = BEMHTML;
++            }
++        );
++    }
++}
++// If exists global variable but not defined module...
++else if ( typeof window.BEMHTML === 'object' ) {
++    modules.define('BEMHTML', [],
++        function _provide (provide) {
++            provide(BEMHTML);
++        }
++    );
++}
++// If absent both module and global variable...
++else {
++
++/* jshint ignore:start */
++/* eslint-disable */
++/*{{{ begin base.bemhtml.js */
++
+ var BEMHTML;
+ (function(global) {
+ function buildBemXjst(libs) {
+@@ -2300,7 +2326,7 @@
+ });;
+ return module.exports || exports.BEMHTML;
+ }({}, {});
+-var api = new BEMHTML({"to":"BEMHTML.js"});
++var api = new BEMHTML({ elemJsInstances:true, exportName:'BEMHTML', to:'BEMHTML.js' });
+ api.compile(function(match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply) {
+ /* BEM-XJST User code here: */
+ 
+@@ -2323,7 +2349,7 @@
+ 
+ 
+ 
+-modules.define("BEMHTML",[],function(provide) { var engine = buildBemXjst({});provide(engine);});
++modules.define("BEMHTML",[],function(provide) { var engine = glob.BEMHTML = buildBemXjst({}); provide(engine); });
+ } else {
+ var _libs = {};
+ 
+@@ -2338,3 +2364,8 @@
+ }
+ }
+ })(typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : this);
++/* end base.bemhtml.js }}}*/
++/* eslint-enable */
++/* jshint ignore:end */
++
++}

@@ -1,0 +1,37 @@
+/* eslint-env es6, node, commonjs */
+// vim: ft=javascript
+/**
+ * @module OldPage
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.11.04 20:41
+ * @version 2018.11.04 20:41
+ */
+
+const
+
+  Env = require('../../Env.js'),
+
+  pageId = Env.getPageId(__dirname),
+
+  // config = Env.config,
+
+  /** pageContent ** {{{ Page content
+   */
+  pageContent = {
+    block: 'BundlePage',
+  },/*}}}*/
+
+  /** bemjson ** {{{ Entire page
+   */
+  bemjson = Env.page({
+    pageId,
+    title: Env.pkg.name + ': Bundle index',
+    mods: {
+      BundleIndex: true,
+    },
+    contentBlock: pageContent,
+  })/*}}}*/
+
+;
+
+module.exports = bemjson; // Result

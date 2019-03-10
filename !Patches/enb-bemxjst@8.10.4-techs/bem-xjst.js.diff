@@ -1,0 +1,22 @@
+--- ./bem-xjst.js.orig	2018-10-02 23:26:59.330024300 +0300
++++ ./bem-xjst.js	2018-10-03 00:22:55.563183600 +0300
+@@ -71,13 +71,18 @@
+          * Each file will be in a form of an object `{ path: String, contents: String }`.
+          *
+          * @param {String[]} filenames - paths to files
++         * @param {String} [sourceRoot] - project root path withoud finishing '/' or '\'
+          * @returns {Promise}
+          * @private
+          */
+-        _readFiles: function (filenames) {
++        _readFiles: function (filenames, sourceRoot) {
+             return vow.all(filenames.map(function (filename) {
+                 return vfs.read(filename, 'utf8')
+                     .then(function (source) {
++                        // Transforming sourcemap paths replacing windows project root with `../../`...
++                        if (sourceRoot && filename.indexOf(sourceRoot) === 0) {
++                            filename = '../..' + filename.substr(sourceRoot.length).replace(/\\/g, '/');
++                        }
+                         return {
+                             path: filename,
+                             contents: source

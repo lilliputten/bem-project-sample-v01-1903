@@ -1,0 +1,25 @@
+/* vim: set ft=stylus: */
+/**
+ * @module App
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.09.30 21:52
+ * @version 2018.09.30 21:52
+ */
+
+.App {
+  background-color: $layoutBgColor;
+  height: 100%;
+  &__Container {
+    min-height: 100%;
+    background-color: $defaultBgColor;
+    // Vertical full-height (100%) flex App
+    display: flex;
+    flex-direction: column;
+  }
+  &__Content {
+    flex: 1;
+    // height: 100%;
+    background-color: $defaultBgColor;
+  }
+}
+

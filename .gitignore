@@ -1,0 +1,47 @@
+
+# Submodules
+.bem/templates
+bundle
+
+# Temp etc...
+\!ARC*
+zia*
+*_
+*~
+node_modules/
+\!UNUSED/
+.DS_Store
+.idea/
+*.iml
+.project
+/*.docs
+/*.examples
+/*.specs
+/*.tests
+/*.sets
+/*.tmpl-specs
+
+# Archives
+
+#!*.zip
+
+# Other VCS...
+.svn
+
+# Logs
+*.log
+
+# Generated stuff
+# dist/
+# package/
+# bundle/
+
+# bem
+.bem/cache/
+.enb/tmp/
+
+# bundles...
+*pages*/*/*.*
+!*pages*/*/*.bemjson.js
+!*pages*/*/*.bemjson
+!*pages*/.bem/*

@@ -1,0 +1,29 @@
+// vim: ft=javascript
+/* eslint-env es6, node, commonjs */
+const
+
+  Env = require('../../Env.js'),
+
+  pageId = Env.getPageId(__dirname),
+
+  // config = Env.config,
+
+  /** pageContent ** {{{ Page content
+   */
+  pageContent = {
+
+    block: 'test',
+
+  },/*}}}*/
+
+  /** bemjson ** {{{ Entire page
+   */
+  bemjson = Env.page({
+    pageId,
+    content: pageContent,
+    // headerContent: 'override header content',
+  })/*}}}*/
+
+;
+
+module.exports = bemjson; // Result

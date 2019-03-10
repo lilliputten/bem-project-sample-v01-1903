@@ -1,0 +1,60 @@
+/* vim: set ft=stylus: */
+/**
+ * @module common
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.10.11 20:59
+ * @version 2018.10.11 20:59
+ */
+
+.common {
+}
+
+/*{{{ Mini bootstrap... */
+
+.container {
+  padding-right: $(containerPadding)px;
+  padding-left: $(containerPadding)px;
+}
+
+// .row {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-right: -$(containerPadding)px;
+//   margin-left: -$(containerPadding)px;
+//   // &__item {
+//   //   position: relative;
+//   //   padding-right: $(containerPadding)px;
+//   //   padding-left: $(containerPadding)px;
+//   // }
+// }
+
+.navbar-nav {
+  display: flex;
+  // flex-direction: column;
+  // padding-left: 0;
+  // margin-bottom: 0;
+  list-style: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar-nav .dropdown-menu {
+  position: static;
+  float: none;
+}
+
+.nav-link {
+  // display: block;
+  padding: 0.5rem .5rem;
+}
+
+.nav-link:hover, .nav-link:focus {
+  text-decoration: none;
+}
+
+.nav-link.disabled {
+  color: #6c757d;
+}
+
+/*}}}*/
+

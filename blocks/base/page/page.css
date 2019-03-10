@@ -1,0 +1,46 @@
+/* vim: set ft=stylus: */
+/**
+ * @module page
+ * @overview Common page styles
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.09.28, 01:22
+ * @version 2018.09.30, 19:48
+ */
+
+// Layout...
+
+.App,
+html,
+body {
+  height: 100%;
+}
+body.page.page_theme_islands,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $layoutBgColor;
+  @mixin defaultFont;
+}
+
+
+// bootsrtap style extensions...
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+.site-bg-primary {
+  background-color: $primaryColor;
+}
+
+// Links...
+a {
+  color: $linkColor; // color($linkColor shade(15%)); // darken
+  text-decoration: none;
+}
+
+a:hover {
+  color: color($linkColor shade(20%)); // darken
+  text-decoration: underline;
+}
+

@@ -1,0 +1,11 @@
+#!/bin/sh
+# @version 2019.02.27, 12:11
+
+DIFFSCRIPT="`dirname $0`/make-diff"
+
+for F in `find . \( -iname "*.orig" -o -name "*_" \) -type f`; do
+    NAME=`echo ${F} | sed 's/\(\.orig\|_\)$//'`
+    echo "${NAME} ..."
+    sh "${DIFFSCRIPT}" "${NAME}"
+done
+

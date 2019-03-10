@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit:
+    // https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Current Program",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/nodemon",
+            "program": "${file}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "enb make",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/nodemon",
+            "program": "${workspaceRoot}/node_modules/enb/lib/cli/cli.js",
+            "env": {
+                "YENV": "production",
+            },
+            "args": [
+                "make"
+            ],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "enb make Demo",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/nodemon",
+            "program": "${workspaceRoot}/node_modules/enb/lib/cli/cli.js",
+            "args": [
+                "make",
+                "pages/Demo/Demo.css"
+            ],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "gulp",
+            "runtimeExecutable": "node",
+            "program": "${workspaceRoot}/node_modules/gulp-cli/bin/gulp.js",
+            "args": [
+                "copyRootAssets"
+            ],
+        }
+    ]
+}

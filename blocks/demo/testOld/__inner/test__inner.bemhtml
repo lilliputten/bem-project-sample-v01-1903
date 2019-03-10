@@ -1,0 +1,21 @@
+// vim: ft=javascript
+/* globals config, helpers, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ * @module test__inner
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2018.10.01 01:57
+ * @version 2018.10.01 01:57
+ */
+
+block('test').elem('inner')(
+
+  def()(function(){
+    this.escapeContent = false;
+    console.log('XXX in test__inner.bemhtml (runtime!)', config);//eslint-disable-line
+    debugger;//eslint-disable-line
+    return applyNext();
+  }),
+
+  tag()('h1')
+
+);

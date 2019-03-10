@@ -1,0 +1,7 @@
+/* vim: set ft=stylus: */
+
+.test {
+  padding: 10px;
+  min-height: 200px;
+  /*DEBUG*/border: 1px solid $testColor;
+}

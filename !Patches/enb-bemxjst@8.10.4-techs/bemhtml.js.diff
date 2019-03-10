@@ -1,0 +1,19 @@
+--- ./bemhtml.js.orig	2018-10-02 22:35:50.249827500 +0300
++++ ./bemhtml.js	2018-10-03 00:21:58.378340800 +0300
+@@ -56,6 +56,7 @@
+     .defineOption('requires')
+     .defineOption('iife', false)
+     .defineOption('sourcemap', false)
++    .defineOption('sourceRoot') // Pass project root for transforming sourcemap paths
+     .defineOption('forceBaseTemplates', false)
+     .useFileList(['bemhtml.js'])
+     .builder(function (fileList) {
+@@ -66,7 +67,7 @@
+ 
+         var filenames = this._getUniqueFilenames(fileList);
+ 
+-        return this._readFiles(filenames)
++        return this._readFiles(filenames, this._sourceRoot) // Pass project root for transforming sourcemap paths (see `./bem-xjst.js`)
+             .then(this._processSources, this)
+             .then(this._compileBEMHTML, this);
+     })

@@ -1,0 +1,6 @@
+[submodule ".bem/templates"]
+	path = .bem/templates
+	url = git@github.com:lilliputten/bem-templates-classic.git
+[submodule "bundle"]
+	path = bundle
+	url = git@bitbucket.org:lilliputten/axiomica-questionnaire-v1-1810-bundle.git

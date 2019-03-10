@@ -1,0 +1,27 @@
+#Options +Indexes
+Options None
+AddDefaultCharset utf-8
+
+ErrorDocument 404 /bundle/pages/test.html
+ErrorDocument 403 /bundle/pages/test.html
+
+DirectoryIndex index.html
+
+AuthUserFile /home/g/goldenjeru/golden-jewelery.ru/.security/.htpasswd
+AuthGroupFile /home/g/goldenjeru/golden-jewelery.ru/.security/.htgroups
+
+AuthType Basic
+AuthName posudabox-project-2018.09
+Require valid-user
+
+#RewriteEngine on
+#RewriteRule ^index2.htm$ index.php
+#RewriteRule ^unpack[=?](.*)$ a/ux.pl?arc=arc/$1
+#RewriteRule ^clearall$ a/del.pl
+#RewriteRule ^delete? a/del.pl?
+
+#php_flag register_globals on
+#php_flag magic_quotes_gpc off
+#php_value session.use_trans_sid 0
+#php_value session.name sid
+
