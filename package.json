@@ -103,7 +103,7 @@
     "install-templates": "echo --Install bem/templates submodule-- && ( test ! -d .bem/templates || git rm -f .bem/templates ) && git submodule add -f git@github.com:lilliputten/bem-templates-classic.git .bem/templates",
     "install-min-ym-SAMPLE": "uglifyjs node_modules/ym/modules.js -m > node_modules/ym/modules.min.js",
     "postinstall-parallel-SAMPLE": "echo --Install additional packages (parallel)-- && npm-run-all --parallel install-templates install-bundle install-deploy",
-    "postinstall": "echo --Run postinstall tasks-- && npm-run-all install-patches install-templates install-bundle",
+    "postinstall": "echo --Run postinstall tasks-- && npm-run-all install-patches install-templates",
     "server": "enb server",
     "start": "npm run -s server",
     "test-make": "set YENV=production&& node node_modules/enb/lib/cli/cli.js make pages/test",
